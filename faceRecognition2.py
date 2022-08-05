@@ -14,7 +14,7 @@ faceCascade = cv2.CascadeClassifier(cascadePath);
 font = cv2.FONT_HERSHEY_SIMPLEX
 api_key_value = "randomapi190"
 
-url = "http://skripsiarif.xyz/api.php"
+url = "http://skripsiarif.xyz//absen/absen"
 
 
 now = datetime.now()
@@ -22,7 +22,7 @@ today = now.strftime("%B %d, %Y")
 thisTime = now.strftime("%H:%M:%S")
 #print (today)
 #print("Current Time =", thisTime)
-id = 1  
+id = 1
 
 iddata = ['1804030129', ' ', ' ', ' ', ' ']
 names = ['nama orang dengan nip 1804030129', ' ', ' ', ' ', ' ']
@@ -55,6 +55,11 @@ while True:
         id, confidence = recognizer.predict(gray[y:y + h, x:x + w])
         
         if (confidence < 100) and (confidence > 50):
+            id = "unknown"  
+            confidence = "  {0}%".format(round(100 - confidence))
+
+
+        else:
             id = iddata[id]
             idnames = names[id]
             confidence = "  {0}%".format(round(100 - confidence))
@@ -69,10 +74,6 @@ while True:
             print("hallo", id)
             time.sleep(10)
 
-
-        else:
-            id = "unknown"  
-            confidence = "  {0}%".format(round(100 - confidence))
             
 
         cv2.putText(img, str(idnames), (x + 5, y - 5), font, 1, (255, 255, 255), 2)
