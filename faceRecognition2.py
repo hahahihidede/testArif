@@ -55,10 +55,6 @@ while True:
         id, confidence = recognizer.predict(gray[y:y + h, x:x + w])
         
         if (confidence < 100) and (confidence > 50) and (confidence < 20) and (confidence > 0 ):
-            id = "unknown"  
-            confidence = "  {0}%".format(round(100 - confidence))
-
-        else:
             id = iddata[id]
             #idnames = names[id]
             confidence = "  {0}%".format(round(100 - confidence))
@@ -73,7 +69,11 @@ while True:
             print("hallo", id)
             time.sleep(10)
 
-            
+
+        else:
+            id = "unknown"  
+            confidence = "  {0}%".format(round(100 - confidence))
+           
 
         cv2.putText(img, str(id), (x + 5, y - 5), font, 1, (255, 255, 255), 2)
         cv2.putText(img, str(confidence), (x + 5, y + h - 5), font, 1, (255, 255, 0), 1)
