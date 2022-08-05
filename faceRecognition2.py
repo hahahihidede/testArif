@@ -25,7 +25,7 @@ thisTime = now.strftime("%H:%M:%S")
 id = 1
 
 iddata = ['1804030129', ' ', ' ', ' ', ' ']
-names = ['nama orang dengan nip 1804030129', ' ', ' ', ' ', ' ']
+#names = ['nama orang dengan nip 1804030129', ' ', ' ', ' ', ' ']
 
 # Initialize and start realtime video capture
 cam = cv2.VideoCapture(0)
@@ -61,7 +61,7 @@ while True:
 
         else:
             id = iddata[id]
-            idnames = names[id]
+            #idnames = names[id]
             confidence = "  {0}%".format(round(100 - confidence))
             data = "api_key=" + api_key_value + "&nip=" + id  +  " "
             #notifikasi suara wajah dikenali
@@ -76,7 +76,7 @@ while True:
 
             
 
-        cv2.putText(img, str(idnames), (x + 5, y - 5), font, 1, (255, 255, 255), 2)
+        cv2.putText(img, str(id), (x + 5, y - 5), font, 1, (255, 255, 255), 2)
         cv2.putText(img, str(confidence), (x + 5, y + h - 5), font, 1, (255, 255, 0), 1)
 
     cv2.imshow('camera', img)
