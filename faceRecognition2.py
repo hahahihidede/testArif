@@ -24,7 +24,7 @@ thisTime = now.strftime("%H:%M:%S")
 #print("Current Time =", thisTime)
 id = 1
 
-iddata = ['1804030129', ' ', ' ', ' ', ' ']
+iddata = ['1804030129', '123123', ' ', ' ', ' ']
 #names = ['nama orang dengan nip 1804030129', ' ', ' ', ' ', ' ']
 
 # Initialize and start realtime video capture
@@ -54,10 +54,9 @@ while True:
 
         id, confidence = recognizer.predict(gray[y:y + h, x:x + w])
         
-        if (confidence < 100) and (confidence > 50):
+        if (confidence < 100) and (confidence > 50) and (confidence < 20) and (confidence > 10 ):
             id = "unknown"  
             confidence = "  {0}%".format(round(100 - confidence))
-
 
         else:
             id = iddata[id]
@@ -65,7 +64,7 @@ while True:
             confidence = "  {0}%".format(round(100 - confidence))
             data = "api_key=" + api_key_value + "&nip=" + id  +  " "
             #notifikasi suara wajah dikenali
-            os.system('mpg321 absenmasuk.mp3 &')
+            os.system('mpg321 absenberhasil.mp3 &')
             headers = {
                 "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36 Edge/18.19582",
                 "Content-Type": "application/x-www-form-urlencoded"}
