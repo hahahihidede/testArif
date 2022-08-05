@@ -54,7 +54,7 @@ while True:
 
         id, confidence = recognizer.predict(gray[y:y + h, x:x + w])
         
-        if (confidence < 100) and (confidence > 50) and (confidence < 20) and (confidence > 10 ):
+        if (confidence < 100) and (confidence > 50) and (confidence < 20) and (confidence > 0 ):
             id = "unknown"  
             confidence = "  {0}%".format(round(100 - confidence))
 
